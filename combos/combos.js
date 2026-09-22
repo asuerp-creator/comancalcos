@@ -20,10 +20,10 @@ var L={"04":[{"s":"t25","x":24.82,"y":20.34,"w":39.27,"hh":40.67,"r":32.4,"cx":6
 var CSS="\n@font-face{font-family:'ComanFat';src:url('__B__fatfont.woff2') format('woff2');font-weight:400;font-display:swap}\n@font-face{font-family:'Bebas';src:url('__B__bebas.woff2') format('woff2');font-weight:400;font-display:swap}\n.mn-cmb{padding:34px 0 24px;margin-bottom:0;overflow-x:clip;background:#fff}\n.mn-cmb__in{max-width:1300px;margin:0 auto;padding:0 15px}\n.mn-cmb__tit{font-family:ComanFat,Montserrat,sans-serif;font-weight:400;font-size:clamp(32px,8.5vw,56px);line-height:1;color:#10233f;text-align:center;margin:0 0 8px;-webkit-text-stroke:.42em #fff;paint-order:stroke fill}\n.mn-cmb__sub{font-family:Poppins,sans-serif;font-size:15px;line-height:1.5;color:#4a5b73;text-align:center;margin:0 0 24px}\n.mn-cmb__grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:16px}\n.mn-cmb__card{position:relative;display:flex;flex-direction:column;border-radius:24px;padding:18px 16px 16px;background:var(--bg);isolation:isolate;transition:transform .4s cubic-bezier(.22,.7,.3,1),box-shadow .4s ease}\n.mn-cmb__card::after{content:\"\";position:absolute;inset:8px;border-radius:17px;border:1.5px solid var(--ln);pointer-events:none;z-index:4}\n.mn-cmb__off{align-self:center;font-family:Montserrat,sans-serif;font-weight:800;font-size:11px;letter-spacing:.09em;padding:4px 11px;border-radius:999px;background:var(--fg);color:var(--bg);margin:0 0 9px}\n.mn-cmb__name{font-family:Bebas,Montserrat,sans-serif;font-weight:400;font-size:clamp(28px,7.4vw,38px);line-height:1.05;text-align:center;color:var(--fg);margin:0 0 8px;min-height:2.1em;display:flex;align-items:center;justify-content:center;padding:0 4px;-webkit-text-stroke:.10em var(--bg);paint-order:stroke fill;text-wrap:balance}\n.mn-cmb__stage{position:relative;width:100%;aspect-ratio:27/34;display:flex;align-items:center;justify-content:center}\n.mn-cmb__scene{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:transform .5s cubic-bezier(.22,.7,.3,1)}\n.mn-cmb__bot{position:relative;z-index:2;height:100%;width:auto;aspect-ratio:270/825;max-width:none;display:block;filter:drop-shadow(0 12px 20px rgba(16,35,63,.35))}\n.mn-cmb__cluster{position:absolute;z-index:1;left:50%;top:46%;width:118%;aspect-ratio:.76;transform:translate(-50%,-50%);pointer-events:none}\n.mn-cmb__st{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:auto;opacity:0;transform:translate(calc(-50% + var(--cx)),calc(-50% + var(--cy))) scale(.22);transition:transform .62s cubic-bezier(.24,.9,.3,1),opacity .3s ease;transition-delay:calc(var(--i)*22ms);filter:drop-shadow(0 3px 5px rgba(16,35,63,.3))}\n.mn-cmb__act{position:absolute;z-index:3;left:16px;right:16px;bottom:16px;display:flex;flex-direction:column;gap:8px;opacity:0;transform:translateY(12px);transition:opacity .3s ease,transform .4s cubic-bezier(.22,.7,.3,1);pointer-events:none}\n.mn-cmb__f{margin:0}\n.mn-cmb__buy{display:flex;width:100%;align-items:center;justify-content:space-between;gap:8px;white-space:nowrap;border:0;cursor:pointer;border-radius:12px;padding:13px 14px;font-family:Montserrat,sans-serif;font-weight:800;font-size:12px;letter-spacing:.02em;text-transform:uppercase;background:var(--fg);color:var(--bg);transition:filter .2s ease}\n.mn-cmb__pr{font-size:14px}\n.mn-cmb__see{display:flex;width:100%;align-items:center;justify-content:space-between;gap:8px;white-space:nowrap;box-sizing:border-box;border-radius:12px;padding:11px 14px;font-family:Montserrat,sans-serif;font-weight:700;font-size:12px;letter-spacing:.02em;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--ln2);color:var(--fg);background:var(--bg);transition:background .2s ease}\n.mn-cmb__see svg{flex:none;width:15px;height:15px;stroke:currentColor;stroke-width:2.2;fill:none}\n.mn-cmb__card.is-on,.mn-cmb__card:hover,.mn-cmb__card:focus-within{transform:translateY(-6px);box-shadow:0 20px 38px rgba(16,35,63,.3)}\n.mn-cmb__card.is-on .mn-cmb__scene,.mn-cmb__card:hover .mn-cmb__scene,.mn-cmb__card:focus-within .mn-cmb__scene{transform:scale(.7) translateY(-10%)}\n.mn-cmb__card.is-on .mn-cmb__st,.mn-cmb__card:hover .mn-cmb__st,.mn-cmb__card:focus-within .mn-cmb__st{opacity:1;transform:translate(-50%,-50%) rotate(var(--r)) scale(1)}\n.mn-cmb__card.is-on .mn-cmb__act,.mn-cmb__card:hover .mn-cmb__act,.mn-cmb__card:focus-within .mn-cmb__act{opacity:1;transform:translateY(0);pointer-events:auto}\n.mn-cmb__buy:hover{filter:brightness(1.15)}\n.mn-cmb__see:hover{background:var(--ln)}\n.mn-cmb__buy:focus-visible,.mn-cmb__see:focus-visible{outline:3px solid var(--fg);outline-offset:3px}\n@media (min-width:640px){.mn-cmb__grid{grid-template-columns:1fr 1fr;gap:18px}}\n@media (min-width:1000px){\n.mn-cmb{padding:44px 0 28px}\n.mn-cmb__sub{margin-bottom:32px}\n.mn-cmb__grid{grid-template-columns:repeat(4,1fr);gap:18px}\n.mn-cmb__name{font-size:30px;min-height:2.1em}\n.mn-cmb__card{padding:20px 16px 16px}\n}\n";
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function init(){
-if(document.getElementById("mn-combos"))return;
+if(document.getElementById("mn-combos"))return true;
 var ancla=document.getElementById("mn-calidad");
 if(!ancla){var r=document.getElementById("mn-reviews");if(r)ancla=r.nextElementSibling;}
-if(!ancla)return;
+if(!ancla)return false;
 var st=document.createElement("style");st.textContent=CSS.split("__B__").join(BASE);document.head.appendChild(st);
 var s=document.createElement("section");
 s.id="mn-combos";s.className="mn-cmb";s.setAttribute("aria-labelledby","mn-cmb-tit");
@@ -48,11 +48,11 @@ h+='<li class="mn-cmb__card" style="'+vars+'">'
 +'<img class="mn-cmb__bot" width="270" height="825" loading="lazy" decoding="async" src="'+BASE+'img/b'+p.k+'.webp" alt="Termo con los stickers del '+esc(p.t)+'">'
 +'</div></div>'
 +'<div class="mn-cmb__act">'
-+'<form class="mn-cmb__f" method="post" action="/comprar/">'
++'<form class="mn-cmb__f js-product-form" method="post" action="/comprar/">'
 +'<input type="hidden" name="add_to_cart" value="'+p.p+'">'
 +'<input type="hidden" name="variant_id" value="'+p.v+'">'
 +'<input type="hidden" name="quantity" value="1">'
-+'<button type="submit" class="mn-cmb__buy">Agregar al carrito <span class="mn-cmb__pr">$'+p.pr+'</span></button>'
++'<button type="submit" class="mn-cmb__buy js-addtocart js-prod-submit-form">Agregar al carrito <span class="mn-cmb__pr">$'+p.pr+'</span></button>'
 +'</form>'
 +'<a class="mn-cmb__see" href="/productos/'+p.h+'/">Ver producto <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>'
 +'</div></li>';
@@ -78,6 +78,18 @@ for(var i=0;i<cards.length;i++)cards[i].classList.remove("is-on");}
 function sync(){mq.matches?on():off();}
 sync();
 mq.addEventListener?mq.addEventListener("change",sync):mq.addListener(sync);
+return true;
 }
-document.readyState!=="loading"?init():document.addEventListener("DOMContentLoaded",init);
+/* Las secciones ancla (#mn-reviews, #mn-calidad) las crea otro script.
+   Si todavia no estan, esperamos a que aparezcan en vez de rendirnos. */
+var mo=null;
+function arrancar(){
+if(init())return;
+if(mo)return;
+mo=new MutationObserver(function(){if(init()&&mo){mo.disconnect();mo=null;}});
+mo.observe(document.documentElement,{childList:true,subtree:true});
+setTimeout(function(){if(mo){mo.disconnect();mo=null;}},15000);
+}
+document.readyState!=="loading"?arrancar():document.addEventListener("DOMContentLoaded",arrancar);
+window.addEventListener("pageshow",function(){arrancar();});
 })();
