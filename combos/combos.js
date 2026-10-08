@@ -118,15 +118,9 @@ return s;
 var sec=null, mo=null, t0=Date.now();
 function ubicar(){
 if(!sec)return false;
-var cal=document.getElementById("mn-calidad");
-if(cal&&cal.parentNode){
-if(cal.previousElementSibling!==sec)cal.parentNode.insertBefore(sec,cal);
-return true;
-}
-if(Date.now()-t0>12000){ /* plan B: si #mn-calidad nunca aparece, va despues de resenas */
+/* v1.0.17: la seccion Calidad se elimino (08/10/2026). Va directo despues de las resenas, sin esperar. */
 var r=document.getElementById("mn-reviews");
 if(r&&r.parentNode){if(r.nextElementSibling!==sec)r.parentNode.insertBefore(sec,r.nextElementSibling);return true;}
-}
 return false;
 }
 function arrancar(){
