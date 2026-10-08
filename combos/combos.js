@@ -118,9 +118,12 @@ return s;
 var sec=null, mo=null, t0=Date.now();
 function ubicar(){
 if(!sec)return false;
-/* v1.0.17: la seccion Calidad se elimino (08/10/2026). Va directo despues de las resenas, sin esperar. */
+/* v1.0.18 (08/10/2026): va ARRIBA de las resenas. Si las resenas todavia no
+   aparecieron, se pone arriba de "Los mas elegidos" y las resenas caen debajo. */
 var r=document.getElementById("mn-reviews");
-if(r&&r.parentNode){if(r.nextElementSibling!==sec)r.parentNode.insertBefore(sec,r.nextElementSibling);return true;}
+if(r&&r.parentNode){if(r.previousElementSibling!==sec)r.parentNode.insertBefore(sec,r);return true;}
+var f=document.querySelector('section[data-store="home-products-featured"]');
+if(f&&f.parentNode){if(f.previousElementSibling!==sec)f.parentNode.insertBefore(sec,f);return true;}
 return false;
 }
 function arrancar(){
