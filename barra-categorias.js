@@ -16,7 +16,7 @@ var CATS=[
 ["Planchas","/planchas/"],
 ["Viajes","/viajes/"],
 ["Pelis y TV","/series-y-tv/",[["Series","/series-y-tv/series/"],["Películas","/series-y-tv/peliculas/"]]],
-["Más stickers","/mas/",[["Anime","/mas/anime/"],["Automovilismo","/mas/automovilismo/"],["Marcas","/mas/marcas/"],["Música","/mas/musica/"],["Los Simpsons","/mas/los-simpsons/"],["Aesthetic","/mas/otros/"]]]
+["Más stickers","/mas/",[["Anime","/mas/anime/"],["Automovilismo","/mas/automovilismo/"],["Marcas","/mas/marcas/"],["Música","/mas/musica/"],["Los Simpsons","/mas/los-simpsons/"],["Aesthetic","/mas/otros/"],["Astrología","/mas/astrologia/"]]]
 ];
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function pickImg(img){
