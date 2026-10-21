@@ -28,7 +28,7 @@
     '.nav-list-mobile-categories{display:inline-flex;align-items:center;width:max-content;height:42px;margin:4px 12px;padding:0 6px;' +
     'border-radius:999px;background:rgba(16,35,63,.55);border:1px solid rgba(255,255,255,.22);box-sizing:border-box}' +
     '.nav-list-mobile-categories .nav-list-link{position:relative;display:inline-block;padding:8px 10px;border-radius:999px}' +
-    '.nav-list-mobile-categories .nav-list-link.mn-spot-cur::after{content:"";position:absolute;left:15%;right:15%;bottom:2px;height:2px;' +
+    '.nav-list-mobile-categories .nav-list-link.mn-spot-cur::after{content:"";position:absolute;left:15%;right:15%;bottom:calc(50% - 15px);height:2px;' +
     'background:radial-gradient(ellipse at center,#fff 0%,rgba(255,255,255,0) 75%);box-shadow:0 0 10px 1px rgba(255,255,255,.55)}';
 
   var st = document.createElement('style');
