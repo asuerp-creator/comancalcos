@@ -1,0 +1,92 @@
+{
+  "_ayuda": "Un objeto por banner. foto = ruta relativa a este archivo. titulo/bajada = lista de renglones. resaltar_linea = indice del renglon del titulo que va en oliva (opcional). borrar_texto = [x0,y0,x1,y1] en px de la foto original para borrar texto impreso (opcional). foco_* = punto (0 a 1) que queda centrado en el recorte.",
+  "banners": [
+    {
+      "key": "01-fotos",
+      "foto": "fotos/termo-family.jpg",
+      "titulo": ["Stickers", "con tus fotos"],
+      "bajada": ["Tus recuerdos,", "en tu termo"],
+      "info": "Subí tu foto desde la web",
+      "chips": ["De 5 a 10 cm", "Con o sin fondo"],
+      "boton": "Subí tu foto",
+      "link": "/productos/stickers-personalizados1/",
+      "foco_compu": [0.42, 0.47],
+      "foco_celu": [0.42, 0.50],
+      "borrar_texto": [1330, 230, 1890, 490]
+    },
+    {
+      "key": "02-logos",
+      "foto": "fotos/cameo.jpg",
+      "titulo": ["Stickers", "con tu logo"],
+      "bajada": ["Para tu marca", "o emprendimiento"],
+      "info": "Subí tu diseño desde la web",
+      "chips": ["De 5 a 10 cm", "Hasta 40% OFF llevando más"],
+      "boton": "Armá tus stickers",
+      "link": "/productos/stickers-personalizados1/",
+      "foco_compu": [0.50, 0.24],
+      "foco_celu": [0.42, 0.50],
+      "borrar_texto": [1180, 1820, 1940, 2330]
+    },
+    {
+      "key": "03-boca",
+      "foto": "fotos/IMG_8594.heic",
+      "titulo": ["Todo Boca", "50% OFF"],
+      "resaltar_linea": 1,
+      "bajada": ["Hasta el viernes 23/10"],
+      "info": "Todos los stickers de Boca Juniors",
+      "chips": ["3 cuotas sin interés"],
+      "boton": "Ver todo Boca",
+      "link": "/deportes/boca-juniors/",
+      "foco_compu": [0.50, 0.50],
+      "foco_celu": [0.50, 0.50]
+    },
+    {
+      "key": "04-malvinasxl",
+      "foto": "fotos/IMG_8411.heic",
+      "titulo": ["Megacombo", "Malvinas XL"],
+      "bajada": ["Las Malvinas", "son argentinas"],
+      "info": "12 stickers de vinilo",
+      "chips": ["Hasta 40% OFF llevando más", "3 cuotas sin interés"],
+      "boton": "Quiero el megacombo",
+      "link": "/productos/megacombo-malvinas-buedv/",
+      "foco_compu": [0.50, 0.52],
+      "foco_celu": [0.50, 0.45]
+    },
+    {
+      "key": "05-viajes",
+      "foto": "fotos/viajes-mano.jpg",
+      "titulo": ["Stickers", "viajeros"],
+      "bajada": ["Pegá cada kilómetro", "que recorriste"],
+      "info": "Vinilo resistente al agua y al sol",
+      "chips": ["Hasta 40% OFF llevando más", "3 cuotas sin interés"],
+      "boton": "Ver viajeros",
+      "link": "/viajes/",
+      "foco_compu": [0.50, 0.50],
+      "foco_celu": [0.50, 0.42]
+    },
+    {
+      "key": "06-homenaje",
+      "foto": "fotos/IMG_8705.heic",
+      "titulo": ["Combo", "Homenaje a Messi"],
+      "bajada": ["Campeón del mundo,", "para siempre"],
+      "info": "10 stickers en vinilo blanco y oro",
+      "chips": ["Hasta 40% OFF llevando más", "3 cuotas sin interés"],
+      "boton": "Quiero el combo",
+      "link": "/productos/combo-homenaje-a-messi-10-stickers-vinilo-oro-y-blanco-1vh2m/",
+      "foco_compu": [0.50, 0.50],
+      "foco_celu": [0.52, 0.42]
+    },
+    {
+      "key": "07-planchas",
+      "foto": "fotos/plancha-diego.jpg",
+      "titulo": ["Planchas", "de stickers"],
+      "bajada": ["Todo el diez", "en una sola plancha"],
+      "info": "Vinilo resistente al agua y al sol",
+      "chips": ["Hasta 40% OFF llevando más", "3 cuotas sin interés"],
+      "boton": "Ver planchas",
+      "link": "/planchas/",
+      "foco_compu": [0.50, 0.70],
+      "foco_celu": [0.45, 0.58]
+    }
+  ]
+}
