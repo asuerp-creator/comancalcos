@@ -24,11 +24,14 @@
     '.mn-spot-layer.has-cur .mn-spot-line{display:block}' +
     '@media (max-width:1100px){.js-nav-desktop-list .nav-list-link{font-size:13px;padding:8px 6px}.js-nav-desktop-list>li{padding:0 3px}}' +
     /* ---------- celular ---------- */
-    '.nav-categories{scrollbar-width:none}.nav-categories::-webkit-scrollbar{display:none}' +
-    '.nav-list-mobile-categories{display:inline-flex;align-items:center;width:max-content;height:42px;margin:4px 12px;padding:0 6px;' +
-    'border-radius:999px;background:rgba(16,35,63,.55);border:1px solid rgba(255,255,255,.22);box-sizing:border-box}' +
+    /* la pastilla es el contenedor (queda fija); adentro solo se deslizan los nombres */
+    '.nav-categories-container::before,.nav-categories-container::after{display:none}' +
+    '.nav-categories{margin:4px 12px;height:42px;border-radius:999px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;' +
+    'background:rgba(16,35,63,.55);border:1px solid rgba(255,255,255,.22);box-sizing:border-box;scrollbar-width:none}' +
+    '.nav-categories::-webkit-scrollbar{display:none}' +
+    '.nav-list-mobile-categories{display:inline-flex;align-items:center;width:max-content;height:100%;margin:0;padding:0 8px;background:none;border:0;transition:none}' +
     '.nav-list-mobile-categories .nav-list-link{position:relative;display:inline-block;padding:8px 10px;border-radius:999px}' +
-    '.nav-list-mobile-categories .nav-list-link.mn-spot-cur::after{content:"";position:absolute;left:15%;right:15%;bottom:calc(50% - 15px);height:2px;' +
+    '.nav-list-mobile-categories .nav-list-link.mn-spot-cur::after{content:"";position:absolute;left:15%;right:15%;bottom:2px;height:2px;' +
     'background:radial-gradient(ellipse at center,#fff 0%,rgba(255,255,255,0) 75%);box-shadow:0 0 10px 1px rgba(255,255,255,.55)}';
 
   var st = document.createElement('style');
@@ -54,6 +57,12 @@
     if (curM) {
       curM.classList.add('mn-spot-cur');
       curM.setAttribute('aria-current', 'page');
+      // deja la categoria actual centrada dentro de la pastilla
+      var box = document.querySelector('.nav-categories');
+      if (box) {
+        var rb = box.getBoundingClientRect(), ra = curM.getBoundingClientRect();
+        box.scrollLeft += (ra.left - rb.left) - (rb.width - ra.width) / 2;
+      }
     }
 
     // compu
