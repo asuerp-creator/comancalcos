@@ -1,6 +1,6 @@
 // INICIO custom: menu-spotlight
 // Barra de categorias como pastilla azul translucida (en todas las paginas).
-// Compu: una luz suave sigue al mouse y la categoria en la que estas queda marcada con una linea brillante.
+// Compu: la pastilla es el propio menu (se adapta sola a las categorias); luz que sigue al mouse y linea bajo la categoria actual.
 // Celular: misma pastilla, se desliza de costado, con la categoria actual marcada.
 // No toca los menus desplegables del tema ni el checkout.
 (function () {
@@ -8,20 +8,17 @@
 
   var CSS =
     /* ---------- compu ---------- */
-    '.nav-desktop{isolation:isolate}' +
-    '.js-nav-desktop-list{display:inline-flex;align-items:center;height:44px;margin:3px 0;padding:0 8px;white-space:nowrap}' +
+    /* la pastilla ES el menu: siempre mide lo mismo que las categorias, sean las que sean */
+    '.js-nav-desktop-list{display:inline-flex;align-items:center;height:44px;margin:3px 0;padding:0 8px;white-space:nowrap;' +
+    'border-radius:999px;box-sizing:border-box;border:1px solid rgba(255,255,255,.22);box-shadow:0 6px 20px rgba(16,35,63,.18);' +
+    'background-color:rgba(16,35,63,.6);background-repeat:no-repeat}' +
     '.js-nav-desktop-list>li{padding:0 6px}' +
     '.js-nav-desktop-list .nav-list-link{display:inline-block;padding:8px 9px;border-radius:999px;letter-spacing:.5px}' +
-    /* la pastilla se dibuja en una capa aparte, detras del texto, para no mover los desplegables */
-    '.mn-spot-layer{position:absolute;z-index:-1;border-radius:999px;overflow:hidden;pointer-events:none;' +
-    'background:rgba(16,35,63,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);' +
-    'border:1px solid rgba(255,255,255,.22);box-shadow:0 6px 20px rgba(16,35,63,.18);box-sizing:border-box}' +
-    '.mn-spot-light{position:absolute;bottom:-120px;width:240px;height:240px;margin-left:-120px;border-radius:50%;' +
-    'background:radial-gradient(circle,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 50%);opacity:0;transition:opacity .3s ease}' +
-    '.mn-spot-layer.is-hover .mn-spot-light{opacity:1}' +
-    '.mn-spot-line{position:absolute;bottom:0;width:110px;height:2px;margin-left:-55px;display:none;' +
-    'background:radial-gradient(ellipse at center,#fff 0%,rgba(255,255,255,0) 70%);box-shadow:0 0 12px 2px rgba(255,255,255,.55)}' +
-    '.mn-spot-layer.has-cur .mn-spot-line{display:block}' +
+    /* linea brillante bajo la categoria actual y luz que sigue al mouse: fondos del mismo menu */
+    '.js-nav-desktop-list.mn-has-cur{background-image:radial-gradient(56px 2px at var(--mn-cx,50%) calc(100% - 1px),#fff 0%,rgba(255,255,255,0) 100%)}' +
+    '.js-nav-desktop-list.mn-hover{background-image:radial-gradient(70px circle at var(--mn-mx,50%) 100%,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 100%)}' +
+    '.js-nav-desktop-list.mn-hover.mn-has-cur{background-image:radial-gradient(56px 2px at var(--mn-cx,50%) calc(100% - 1px),#fff 0%,rgba(255,255,255,0) 100%),' +
+    'radial-gradient(70px circle at var(--mn-mx,50%) 100%,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 100%)}' +
     '@media (max-width:1100px){.js-nav-desktop-list .nav-list-link{font-size:13px;padding:8px 6px}.js-nav-desktop-list>li{padding:0 3px}}' +
     /* ---------- celular ---------- */
     /* la pastilla es el contenedor (queda fija); adentro solo se deslizan los nombres */
@@ -66,32 +63,18 @@
     }
 
     // compu
-    var nd = document.querySelector('.nav-desktop');
-    var ul = nd && nd.querySelector('.js-nav-desktop-list');
+    var ul = document.querySelector('.nav-desktop .js-nav-desktop-list');
     if (!ul) return;
     var links = [].slice.call(ul.querySelectorAll(':scope > li > .nav-item-container > a, :scope > li > a'));
     var cur = marcarActual(links);
     if (cur) cur.setAttribute('aria-current', 'page');
 
-    var layer = document.createElement('div');
-    layer.className = 'mn-spot-layer';
-    layer.setAttribute('aria-hidden', 'true');
-    layer.innerHTML = '<div class="mn-spot-light"></div><div class="mn-spot-line"></div>';
-    nd.insertBefore(layer, nd.firstChild);
-    var light = layer.firstChild, line = layer.lastChild;
-
-    function ubicar() {
-      var r = ul.getBoundingClientRect(), p = nd.getBoundingClientRect();
+    function ubicarLinea() {
+      if (!cur) return;
+      var r = ul.getBoundingClientRect(), c = cur.getBoundingClientRect();
       if (!r.width) return;
-      layer.style.left = (r.left - p.left) + 'px';
-      layer.style.top = (r.top - p.top) + 'px';
-      layer.style.width = r.width + 'px';
-      layer.style.height = r.height + 'px';
-      if (cur) {
-        var c = cur.getBoundingClientRect();
-        line.style.left = (c.left - r.left + c.width / 2) + 'px';
-        layer.classList.add('has-cur');
-      }
+      ul.style.setProperty('--mn-cx', (c.left - r.left + c.width / 2) + 'px');
+      ul.classList.add('mn-has-cur');
     }
 
     var raf = 0, mx = 0;
@@ -100,16 +83,17 @@
       if (raf) return;
       raf = requestAnimationFrame(function () {
         raf = 0;
-        light.style.left = (mx - ul.getBoundingClientRect().left) + 'px';
+        ul.style.setProperty('--mn-mx', (mx - ul.getBoundingClientRect().left) + 'px');
+        ul.classList.add('mn-hover');
       });
-      layer.classList.add('is-hover');
     });
-    ul.addEventListener('mouseleave', function () { layer.classList.remove('is-hover'); });
+    ul.addEventListener('mouseleave', function () { ul.classList.remove('mn-hover'); });
 
-    ubicar();
-    window.addEventListener('resize', ubicar);
-    window.addEventListener('load', ubicar);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(ubicar);
+    ubicarLinea();
+    if (window.ResizeObserver) new ResizeObserver(ubicarLinea).observe(ul);
+    window.addEventListener('resize', ubicarLinea);
+    window.addEventListener('load', ubicarLinea);
+    if (document.fonts && document.fonts.addEventListener) document.fonts.addEventListener('loadingdone', ubicarLinea);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
