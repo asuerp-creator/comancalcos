@@ -1,11 +1,14 @@
 // INICIO custom: cantidad-tarjetas
-// Selector de cantidad en las tarjetas de producto de Coman Calcos. v1 (30/09/2026)
+// Selector de cantidad en las tarjetas de producto de Coman Calcos. v2 (24/10/2026)
+// v2: botones - y + de 44x44 en celular (fila propia arriba del boton Agregar), letra 16px (sin zoom en iPhone)
 // Se carga desde Codigos externos con una sola linea <script src=...jsdelivr...>
 (function(){
   // estilos: se inyectan una sola vez
   if(!document.getElementById("mn-qty-css")){
     var st=document.createElement("style"); st.id="mn-qty-css";
-    st.textContent="/* INICIO custom:cantidad-tarjetas */ .item-actions form.mn-qf{display:flex;align-items:flex-start;gap:6px}.item-actions form.mn-qf .js-addtocart{flex:1 1 auto;min-width:0}.mn-qty{position:relative;flex:0 0 54px;height:34px;display:flex;align-items:stretch;background:#f2f2f2;border:1px solid #e1e1e1;border-radius:10px;overflow:hidden}.mn-qty input{width:100%;min-width:0;border:0;background:transparent;text-align:center;padding:0 16px 0 2px;font-family:Poppins,sans-serif;font-size:14px;font-weight:600;color:#10233f;-moz-appearance:textfield;appearance:textfield}.mn-qty input:focus{outline:none}.mn-qty input::-webkit-inner-spin-button,.mn-qty input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.mn-qty__arr{position:absolute;right:0;top:0;bottom:0;width:18px;display:flex;flex-direction:column}.mn-qty__arr button{flex:1;display:flex;align-items:center;justify-content:center;border:0;padding:0;margin:0;background:transparent;color:#555;cursor:pointer;font-size:9px;line-height:1}.mn-qty__arr button:active{background:#e1e1e1}.mn-qty__arr button.mn-qty--tope{opacity:.25;cursor:default}.item-actions form.mn-qf.js-product-form::after{content:\"Agregar\";left:60px}.item-actions form.mn-qf .js-addtocart-text::after{content:\"Agregar\"}@media(min-width:768px){.mn-qty{flex-basis:62px}.item-actions form.mn-qf.js-product-form::after{left:68px}}/* FIN custom */";
+    // Celular: fila 1 = [-] numero [+] (44x44) a todo el ancho; fila 2 = boton Agregar de 44px de alto.
+    // Compu (768px o mas): todo en una fila, como antes. El ::after es el texto "Agregar" que una regla global dibuja sobre el boton.
+    st.textContent="/* INICIO custom:cantidad-tarjetas */ .item-actions form.mn-qf{display:flex;flex-wrap:wrap;align-items:center;gap:6px}.item-actions form.mn-qf .js-addtocart{flex:1 1 100%;min-width:0;height:44px}.mn-qty{flex:1 1 100%;height:46px;display:flex;align-items:stretch;background:#f2f2f2;border:1px solid #e1e1e1;border-radius:10px;overflow:hidden}.mn-qty button{flex:0 0 44px;display:flex;align-items:center;justify-content:center;border:0;padding:0;margin:0;background:transparent;color:#10233f;cursor:pointer;font-family:Poppins,sans-serif;font-size:20px;font-weight:600;line-height:1;touch-action:manipulation}.mn-qty button:active{background:#e1e1e1}.mn-qty button.mn-qty--tope{opacity:.25;cursor:default}.mn-qty input{flex:1 1 auto;width:100%;min-width:0;border:0;background:transparent;text-align:center;padding:0;font-family:Poppins,sans-serif;font-size:16px;font-weight:600;color:#10233f;-moz-appearance:textfield;appearance:textfield}.mn-qty input:focus{outline:none}.mn-qty input::-webkit-inner-spin-button,.mn-qty input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.item-actions form.mn-qf.js-product-form::after{content:\"Agregar\";left:0;top:50px}.item-actions form.mn-qf .js-addtocart-text::after{content:\"Agregar\"}@media(min-width:768px){.item-actions form.mn-qf{flex-wrap:nowrap}.mn-qty{flex:0 0 96px;height:34px}.mn-qty button{flex-basis:30px;font-size:16px}.mn-qty input{font-size:14px}.item-actions form.mn-qf .js-addtocart{flex:1 1 auto;height:auto}.item-actions form.mn-qf.js-product-form::after{left:102px;top:0}}/* FIN custom */";
     (document.head||document.documentElement).appendChild(st);
   }
   function armar(f){
@@ -14,13 +17,14 @@
     if(!btn || !f.querySelector("input[name=add_to_cart]") || f.querySelector("[name=quantity]")) return;
     var box=document.createElement("div");
     box.className="mn-qty";
-    box.innerHTML='<input type="number" name="quantity" value="1" min="1" inputmode="numeric" aria-label="Cantidad">'+
-      '<div class="mn-qty__arr"><button type="button" data-d="1" aria-label="Sumar uno">&#9650;</button>'+
-      '<button type="button" data-d="-1" aria-label="Restar uno">&#9660;</button></div>';
+    box.innerHTML='<button type="button" data-d="-1" aria-label="Restar uno">&#8722;</button>'+
+      '<input type="number" name="quantity" value="1" min="1" inputmode="numeric" aria-label="Cantidad">'+
+      '<button type="button" data-d="1" aria-label="Sumar uno">+</button>';
     f.insertBefore(box, f.firstChild);
     f.classList.add("mn-qf");
     var inp=box.querySelector("input");
     var up=box.querySelector('[data-d="1"]');
+    var down=box.querySelector('[data-d="-1"]');
     // stock: lo lee de los datos que la plantilla ya pone en la tarjeta (null = stock ilimitado)
     var max=null;
     try{
@@ -34,6 +38,7 @@
       if(max>0 && v>max) v=max;
       inp.value=v;
       up.classList.toggle("mn-qty--tope", max>0 && v>=max);
+      down.classList.toggle("mn-qty--tope", v<=1);
     }
     fijar(1);
     box.addEventListener("click",function(e){
