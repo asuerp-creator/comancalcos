@@ -30,7 +30,7 @@
   var CSS=
   "#mn-reviews.mn-rv{position:relative;background:#fff;margin-top:-46px;padding:16px 16px 40px;font-family:Poppins,sans-serif;text-align:center;overflow-x:clip}"+
   "#mn-reviews.mn-rv *{box-sizing:border-box}"+
-  ".mn-rv .mnr-t{margin:0 0 4px;text-wrap:balance}"+
+  ".mn-rv .mnr-t{margin:0 0 22px;text-wrap:balance}"+
   ".mn-rv__stage{--mn-rv-h:236px;position:relative;z-index:2;width:min(640px,100%);height:var(--mn-rv-h);margin:82px auto 0;touch-action:pan-y;text-align:left}"+
   ".mn-rv__card{position:absolute;inset:0;display:flex;flex-direction:column;gap:12px;padding:22px 22px 20px;border-radius:18px;background:#fff;color:#14243b;border:1px solid #e6e9ee;box-shadow:0 14px 34px -16px rgba(16,35,63,.28);transform-origin:50% 0;transition:transform .6s cubic-bezier(.65,0,.35,1),opacity .45s ease;will-change:transform,opacity}"+
   ".mn-rv__card::after{content:'';position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;background:#10233f;opacity:var(--mn-rv-dim,0);transition:opacity .6s cubic-bezier(.65,0,.35,1)}"+
