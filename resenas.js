@@ -49,7 +49,7 @@
   ".mn-rv__all{display:inline-flex;align-items:center;gap:8px;min-height:48px;margin-top:18px;padding:0 30px;border-radius:8px;background:#10233f;color:#fff;text-decoration:none;font:700 16px/1 Poppins,sans-serif}"+
   ".mn-rv__all:hover,.mn-rv__all:focus{background:#1b3459;color:#fff}"+
   ".mn-rv__all:focus-visible{outline:3px solid #EF6237;outline-offset:3px}"+
-  "@media (min-width:768px){.mn-rv__stage{--mn-rv-h:214px}.mn-rv__card{padding:26px 32px 22px}.mn-rv__q{font-size:24px;line-height:1.3;-webkit-line-clamp:2}}";
+  "@media (min-width:768px){#mn-reviews.mn-rv{margin-top:-56px;padding-top:20px}.mn-rv__stage{--mn-rv-h:214px}.mn-rv__card{padding:26px 32px 22px}.mn-rv__q{font-size:24px;line-height:1.3;-webkit-line-clamp:2}}";
 
   var STAR='<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg>';
 
