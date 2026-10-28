@@ -44,6 +44,9 @@ var CSS = "/* INICIO custom: barra-cyber-countdown */"
 + ".mn-cyb__timer{font-size:14px}"
 + ".mn-cyb__btn{font-size:13px;letter-spacing:1.5px;padding:11px 26px}"
 + "}"
+// En la home el slider sube por detrás del encabezado transparente: le descontamos la altura de la barra
+// para que la barra no le tape la parte de arriba a la foto.
++ "html body.template-home .js-home-sections-container>[data-store=\"home-slider\"]{margin-top:calc(-1 * var(--mn-hdr-h,0px) + var(--mn-cyb-h,0px))}"
 + "/* FIN custom */";
 
 function pad(n) { return (n < 10 ? "0" : "") + n; }
@@ -104,6 +107,7 @@ function armar() {
       subL.style.display = "inline";
       falta.style.display = "none";
       timer.style.display = "none";
+      if (!bar.mnActivo) { bar.mnActivo = true; avisarAltura(); }
       return;
     }
     var s = Math.floor(diff / 1000);
@@ -122,10 +126,16 @@ function armar() {
 }
 
 // El encabezado transparente de la home mide la altura del header en "resize":
-// se lo avisamos para que acomode el slider con la barra incluida.
+// se lo avisamos, y guardamos la altura de la barra en --mn-cyb-h para descontarla.
 function avisarAltura() {
+  var b = document.getElementById("mn-cyb");
+  document.documentElement.style.setProperty("--mn-cyb-h", (b ? b.offsetHeight : 0) + "px");
   try { window.dispatchEvent(new Event("resize")); } catch (e) {}
 }
+window.addEventListener("resize", function () {
+  var b = document.getElementById("mn-cyb");
+  document.documentElement.style.setProperty("--mn-cyb-h", (b ? b.offsetHeight : 0) + "px");
+});
 
 if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", armar);
 else armar();
