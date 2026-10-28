@@ -1,5 +1,5 @@
 // INICIO custom: barra-cyber-countdown
-// Barra "Cyber Coman" con cuenta regresiva, pegada abajo del encabezado (va dentro del header sticky).
+// Barra "Cyber Coman" con cuenta regresiva, arriba del logo (va dentro del header sticky).
 // Se carga desde Códigos externos con una sola línea <script src=...jsdelivr...>
 // Antes del 31/10: cuenta regresiva. 31/10 y 1/11: "¡Arrancó el Cyber Coman!". Desde el 2/11 no se muestra.
 (function () {
@@ -21,7 +21,7 @@ if (new Date() >= FIN) return;
 if (location.pathname.indexOf("/checkout") !== -1) return; // nunca en el checkout
 
 var CSS = "/* INICIO custom: barra-cyber-countdown */"
-+ ".mn-cyb{background:#151212;border-top:1px solid #2c2424;color:#fff;font-family:inherit}"
++ ".mn-cyb{background:#151212;border-bottom:1px solid #2c2424;color:#fff;font-family:inherit}"
 + ".mn-cyb__in{max-width:1100px;margin:0 auto;padding:8px 12px;display:flex;align-items:center;justify-content:center;gap:10px}"
 + ".mn-cyb__big{color:#dcb45a;font-weight:800;line-height:1;display:flex;flex-direction:column;align-items:center;flex:0 0 auto}"
 + ".mn-cyb__num{font-size:26px}"
@@ -79,9 +79,13 @@ function armar() {
   btn.textContent = BOTON;
   btn.href = LINK;
 
-  // Va adentro del encabezado (que es sticky), al final: queda pegada abajo del menú.
+  // Va adentro del encabezado (que es sticky), entre la franja negra de arriba y el logo/menú.
+  // No va abajo del menú porque en la home el slider sube por detrás del menú transparente
+  // y la barra le cortaría la foto al medio.
   var header = document.querySelector("header.js-head-main") || document.querySelector("header");
-  if (header) header.appendChild(bar);
+  var topbar = header && header.querySelector(".js-topbar");
+  if (topbar && topbar.parentNode === header) header.insertBefore(bar, topbar.nextSibling);
+  else if (header) header.insertBefore(bar, header.firstChild);
   else document.body.insertBefore(bar, document.body.firstChild);
 
   var titC = bar.querySelector(".mn-cyb__tit-c");
