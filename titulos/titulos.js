@@ -35,6 +35,7 @@ var CSS="/* INICIO custom: titulos-anton */"
 +"html body .mn-catbar__title img.mn-tt-old{display:none}"
 +"html body .mn-tt{margin:0;text-align:center}"
 +".mn-dato{display:block;font-family:MnScript,cursive;font-weight:400;text-transform:none;font-size:.52em;line-height:1;color:"+OLIVA+";transform:rotate(-5deg);margin:.02em 0 0 34%;text-align:center;letter-spacing:0;white-space:nowrap;-webkit-text-stroke:0}"
++"html body .mn-cmb__tit{margin-bottom:22px}" // que el datito no pise el subtitulo de combos
 +"html body .mn-mat__title .mn-dato,html body .mn-cal__title .mn-dato{color:#10233f}" // fondo celeste: el oliva no se lee
 +"/* FIN custom */";
 
