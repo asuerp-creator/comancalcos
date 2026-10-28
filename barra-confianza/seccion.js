@@ -5,7 +5,7 @@
 /* ===================== EDITA SOLO ESTE BLOQUE ===================== */
 var ITEMS=[
   {grande:"+10.000",        chico:"clientes felices"},
-  {grande:"5 ★",       chico:"estrellas en Google"},
+  {grande:"5.0 ★",     chico:"estrellas en Google"},
   {grande:"40% off",        chico:"por cantidad"},
   {grande:"Envío gratis", chico:"desde $35.000", texto:true}
 ];
