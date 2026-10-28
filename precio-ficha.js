@@ -24,12 +24,12 @@
       ".mn-pd{margin-top:12px}"+
       ".mn-pd__cuotas{margin:0 0 10px;font-size:15px;line-height:1.3;color:#4a4a4a}"+
       ".mn-pd__cuotas strong{color:#10233f;font-weight:700}"+
-      ".mn-pd__transf{display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px 10px;max-width:100%;padding:12px 16px;background:#f5f7ee;border:1px solid #cfd6b0;border-radius:10px}"+
-      ".mn-pd__transf-lbl{font-size:15px;color:#10233f}"+
-      ".mn-pd__transf-precio{font-size:22px;font-weight:800;line-height:1;color:#10233f}"+
-      ".mn-pd__transf-off{padding:4px 10px;border-radius:999px;background:#5e6b33;color:#fff;font-size:12px;font-weight:700;letter-spacing:.5px}"+
+      ".mn-pd__transf{display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px 8px;max-width:100%;padding:10px 12px;background:#f5f7ee;border:1px solid #cfd6b0;border-radius:10px}"+
+      ".mn-pd__transf-lbl{font-size:14px;color:#10233f}"+
+      ".mn-pd__transf-precio{font-size:20px;font-weight:800;line-height:1;color:#10233f}"+
+      ".mn-pd__transf-off{padding:4px 9px;border-radius:999px;background:#5e6b33;color:#fff;font-size:12px;font-weight:700;letter-spacing:.5px}"+
       ".mn-pd [hidden],.mn-pd[hidden]{display:none}"+
-      "@media(min-width:768px){.section-single-product .js-price-container #price_display{font-size:42px}}"+
+      "@media(min-width:768px){.section-single-product .js-price-container #price_display{font-size:42px}.mn-pd__transf{padding:12px 16px;gap:6px 10px}.mn-pd__transf-lbl{font-size:15px}.mn-pd__transf-precio{font-size:22px}.mn-pd__transf-off{padding:4px 10px}}"+
       "/* FIN custom */";
     (document.head||document.documentElement).appendChild(st);
   }
