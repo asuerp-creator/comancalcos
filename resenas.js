@@ -5,10 +5,10 @@
 // y la clase .mnr-t del titulo (la estiliza el bloque "titulos-unificados").
 (function(){
   /* ===================== EDITA SOLO ESTE BLOQUE ===================== */
-  // Reseñas reales de Google Maps (perfil "Coman Calcos"), leidas el 25/10/2026.
+  // Reseñas reales de Google Maps (perfil "Coman Calcos"), leidas el 25/10/2026. Cantidad actualizada a 53 el 28/10/2026.
   // q = fragmento textual de la reseña; "…" marca donde se recorto.
   var TITULO="Reseñas 100% reales";
-  var PROMEDIO="5,0", CANTIDAD="47";
+  var PROMEDIO="5,0", CANTIDAD="53";
   var LINK="https://www.google.com/maps/place/Coman+Calcos/@-34.5915801,-58.5064272,17z/data=!4m6!3m5!1s0x95bcb7f8d4d7441d:0xc845ec5a011aff7a!8m2!3d-34.5915801!4d-58.5064272!16s%2Fg%2F11nv342nqt";
   var R=[
     {n:"Luciana Etchart",r:"Diseñadora gráfica · Google",q:"Los tengo pegados en mi auto, y termo hace un año y están impecables"},
