@@ -13,7 +13,7 @@ var TIT_MANANA  = "Mañana 00:00 hs arranca el Cyber Coman";
 var TIT_ACTIVO  = "¡Arrancó el Cyber Coman!";
 var TIT_CORTO   = "Cyber Coman · Sáb 31"; // título en celular, antes de arrancar
 var SUB    = "Hasta 80% de descuento en toda la web";
-var BOTON  = "Ver productos";
+var BOTON  = ""; // INICIO custom: sin-boton-ver-productos — vacío = no se muestra el botón (antes: "Ver productos") // FIN custom
 var LINK   = "/productos/";
 // INICIO custom: pre-cyber-mail
 var MAIL_PH    = "Tu email";                          // texto gris adentro del campo
@@ -104,6 +104,9 @@ function armar() {
   var btn = bar.querySelector(".mn-cyb__btn");
   btn.textContent = BOTON;
   btn.href = LINK;
+  // INICIO custom: sin-boton-ver-productos
+  if (!BOTON) btn.parentNode.removeChild(btn);
+  // FIN custom
 
   // INICIO custom: pre-cyber-mail
   // Anota el mail en la misma lista de newsletter que el formulario nativo del pie (POST a /winnie-pooh).
