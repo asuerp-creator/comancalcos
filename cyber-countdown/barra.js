@@ -15,6 +15,12 @@ var TIT_CORTO   = "Cyber Coman · Sáb 31"; // título en celular, antes de arra
 var SUB    = "Hasta 80% de descuento en toda la web";
 var BOTON  = "Ver productos";
 var LINK   = "/productos/";
+// INICIO custom: pre-cyber-mail
+var MAIL_PH    = "Tu email";                          // texto gris adentro del campo
+var MAIL_BOTON = "Avisame";                            // botón del formulario
+var MAIL_OK    = "¡Listo! Te avisamos cuando arranque."; // mensaje después de anotarse
+var MAIL_ERR   = "No se pudo anotar, probá de nuevo.";
+// FIN custom
 /* =================== FIN DEL BLOQUE EDITABLE ====================== */
 
 if (new Date() >= FIN) return;
@@ -34,6 +40,15 @@ var CSS = "/* INICIO custom: barra-cyber-countdown */"
 + ".mn-cyb__timer{display:inline-block;color:#fff;font-family:inherit;font-weight:700;font-size:13px;border:1px dashed rgba(255,255,255,.7);border-radius:4px;padding:1px 5px;margin-left:4px;font-variant-numeric:tabular-nums}"
 + ".mn-cyb__btn{flex:0 0 auto;display:inline-block;background:#10233f;color:#fff;font-weight:800;font-size:11px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:8px 10px;border-radius:999px;white-space:nowrap}"
 + ".mn-cyb__btn:hover,.mn-cyb__btn:focus{background:#1c3157;color:#fff;text-decoration:none}"
+/* INICIO custom: pre-cyber-mail */
++ ".mn-cyb__in{flex-wrap:wrap}"
++ ".mn-cyb__form{flex:1 0 100%;display:flex;justify-content:center;gap:6px;margin:0}"
++ ".mn-cyb__mail{flex:1 1 auto;min-width:0;max-width:240px;height:32px;padding:0 12px;border:1px solid rgba(255,255,255,.7);border-radius:999px;background:#fff;color:#10233f;font-family:inherit;font-size:16px}"
++ ".mn-cyb__send{flex:0 0 auto;height:32px;padding:0 14px;border:0;border-radius:999px;background:#10233f;color:#fff;font-family:inherit;font-weight:800;font-size:11px;letter-spacing:1px;text-transform:uppercase;cursor:pointer}"
++ ".mn-cyb__send:hover,.mn-cyb__send:focus{background:#1c3157}"
++ ".mn-cyb__send[disabled]{opacity:.6;cursor:default}"
++ ".mn-cyb__msg{flex:1 0 100%;text-align:center;font-size:12px;font-weight:700;color:#fff;margin:0}"
+/* FIN custom */
 + "@media (min-width:768px){"
 + ".mn-cyb__in{padding:12px 16px;gap:32px}"
 + ".mn-cyb__num{font-size:40px}"
@@ -43,6 +58,13 @@ var CSS = "/* INICIO custom: barra-cyber-countdown */"
 + ".mn-cyb__sub{font-size:13px}.mn-cyb__sub-l{display:inline}"
 + ".mn-cyb__timer{font-size:14px}"
 + ".mn-cyb__btn{font-size:13px;letter-spacing:1.5px;padding:11px 26px}"
+/* INICIO custom: pre-cyber-mail */
++ ".mn-cyb__in{flex-wrap:nowrap;gap:24px}"
++ ".mn-cyb__form{flex:0 0 auto}"
++ ".mn-cyb__mail{width:210px;height:40px;font-size:14px}"
++ ".mn-cyb__send{height:40px;padding:0 20px;font-size:13px;letter-spacing:1.5px}"
++ ".mn-cyb__msg{flex:0 1 auto;font-size:14px}"
+/* FIN custom */
 + "}"
 // En la home el slider sube por detrás del encabezado transparente: le descontamos la altura de la barra
 // para que la barra no le tape la parte de arriba a la foto.
@@ -70,6 +92,9 @@ function armar() {
     +   '<p class="mn-cyb__tit"><span class="mn-cyb__tit-c"></span><span class="mn-cyb__tit-l"></span></p>'
     +   '<p class="mn-cyb__sub"><span class="mn-cyb__sub-l"></span><span class="mn-cyb__falta"> faltan</span><span class="mn-cyb__timer">--:--:--</span></p>'
     + '</div>'
+    // INICIO custom: pre-cyber-mail
+    + '<form class="mn-cyb__form" novalidate><input class="mn-cyb__mail" type="email" name="email" autocomplete="email" required aria-label="Email para el Cyber Coman"><button class="mn-cyb__send" type="submit"></button></form>'
+    // FIN custom
     + '<a class="mn-cyb__btn"></a>'
     + '</div>';
   bar.querySelector(".mn-cyb__num").textContent = BIG;
@@ -78,6 +103,51 @@ function armar() {
   var btn = bar.querySelector(".mn-cyb__btn");
   btn.textContent = BOTON;
   btn.href = LINK;
+
+  // INICIO custom: pre-cyber-mail
+  // Anota el mail en la misma lista de newsletter que el formulario nativo del pie (POST a /winnie-pooh).
+  var form = bar.querySelector(".mn-cyb__form");
+  var mail = bar.querySelector(".mn-cyb__mail");
+  var send = bar.querySelector(".mn-cyb__send");
+  mail.placeholder = MAIL_PH;
+  send.textContent = MAIL_BOTON;
+  function mensaje(txt) {
+    var p = document.createElement("p");
+    p.className = "mn-cyb__msg";
+    p.textContent = txt;
+    form.parentNode.replaceChild(p, form);
+    avisarAltura();
+  }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var v = (mail.value || "").trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { mail.focus(); mail.style.borderColor = "#ffb4a8"; return; }
+    mail.style.borderColor = "";
+    send.disabled = true;
+    var datos = new URLSearchParams();
+    datos.append("email", v);
+    datos.append("winnie-pooh", "");
+    datos.append("name", "Sin nombre");
+    datos.append("message", "Pedido de inscripción a newsletter");
+    datos.append("type", "newsletter");
+    datos.append("contact", "");
+    fetch("/winnie-pooh", { method: "POST", body: datos, credentials: "same-origin" })
+      .then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        try { localStorage.setItem("mn-cyb-mail", "1"); } catch (e2) {}
+        mensaje(MAIL_OK);
+      })
+      .catch(function () {
+        send.disabled = false;
+        send.textContent = "Reintentar";
+        mail.style.borderColor = "#ffb4a8";
+        mail.title = MAIL_ERR;
+      });
+  });
+  var yaAnotado = false;
+  try { yaAnotado = localStorage.getItem("mn-cyb-mail") === "1"; } catch (e3) {}
+  if (yaAnotado) mensaje(MAIL_OK);
+  // FIN custom
 
   // Va adentro del encabezado (que es sticky), entre la franja negra de arriba y el logo/menú.
   // No va abajo del menú porque en la home el slider sube por detrás del menú transparente
@@ -111,6 +181,10 @@ function armar() {
       subL.style.display = "inline";
       falta.style.display = "none";
       timer.style.display = "none";
+      // INICIO custom: pre-cyber-mail — cuando arranca el Cyber se saca el formulario
+      var fm = bar.querySelector(".mn-cyb__form, .mn-cyb__msg");
+      if (fm) fm.parentNode.removeChild(fm);
+      // FIN custom
       if (!bar.mnActivo) { bar.mnActivo = true; avisarAltura(); }
       return;
     }
