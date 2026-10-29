@@ -60,6 +60,7 @@ var CSS = "/* INICIO custom: barra-cyber-countdown */"
 + ".mn-cyb__btn{font-size:13px;letter-spacing:1.5px;padding:11px 26px}"
 /* INICIO custom: pre-cyber-mail */
 + ".mn-cyb__in{flex-wrap:nowrap;gap:24px}"
++ ".mn-cyb__btn{order:2}"
 + ".mn-cyb__form{flex:0 0 auto}"
 + ".mn-cyb__mail{width:210px;height:40px;font-size:14px}"
 + ".mn-cyb__send{height:40px;padding:0 20px;font-size:13px;letter-spacing:1.5px}"
@@ -92,10 +93,10 @@ function armar() {
     +   '<p class="mn-cyb__tit"><span class="mn-cyb__tit-c"></span><span class="mn-cyb__tit-l"></span></p>'
     +   '<p class="mn-cyb__sub"><span class="mn-cyb__sub-l"></span><span class="mn-cyb__falta"> faltan</span><span class="mn-cyb__timer">--:--:--</span></p>'
     + '</div>'
-    // INICIO custom: pre-cyber-mail
+    + '<a class="mn-cyb__btn"></a>'
+    // INICIO custom: pre-cyber-mail (en celular va en una segunda fila; en compu, antes del botón)
     + '<form class="mn-cyb__form" novalidate><input class="mn-cyb__mail" type="email" name="email" autocomplete="email" required aria-label="Email para el Cyber Coman"><button class="mn-cyb__send" type="submit"></button></form>'
     // FIN custom
-    + '<a class="mn-cyb__btn"></a>'
     + '</div>';
   bar.querySelector(".mn-cyb__num").textContent = BIG;
   bar.querySelector(".mn-cyb__lbl").textContent = BIG_SUB;
