@@ -5,8 +5,8 @@
 // Los precios, cuotas y % se leen de la plantilla (se actualizan solos al cambiar de variante).
 (function(){
   /* ===================== EDITA SOLO ESTE BLOQUE ===================== */
-  // Mismos datos que resenas.js (perfil de Google Maps "Coman Calcos", leidos el 25/10/2026).
-  var PROMEDIO="5,0", CANTIDAD="47";
+  // Perfil de Google Maps "Coman Calcos". Cantidad de reseñas actualizada a 53 el 28/10/2026 (dato de Manu).
+  var PROMEDIO="5,0", CANTIDAD="53";
   var LINK="https://www.google.com/maps/place/Coman+Calcos/@-34.5915801,-58.5064272,17z/data=!4m6!3m5!1s0x95bcb7f8d4d7441d:0xc845ec5a011aff7a!8m2!3d-34.5915801!4d-58.5064272!16s%2Fg%2F11nv342nqt";
   /* =================== FIN DEL BLOQUE EDITABLE ====================== */
 
