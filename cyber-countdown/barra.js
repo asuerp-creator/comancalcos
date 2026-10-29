@@ -1,18 +1,20 @@
 // INICIO custom: barra-cyber-countdown
 // Barra "Cyber Coman" con cuenta regresiva, arriba del logo (va dentro del header sticky).
 // Se carga desde Códigos externos con una sola línea <script src=...jsdelivr...>
-// Antes del 31/10: cuenta regresiva. 31/10 y 1/11: "¡Arrancó el Cyber Coman!". Desde el 2/11 no se muestra.
+// Antes del 2/11: cuenta regresiva. Del 2/11 al 4/11: "¡Arrancó el Cyber Coman!". Desde el 5/11 no se muestra.
+// INICIO custom: barra-cyber-fechas-lunes — el Cyber (80%) arranca el lunes 2/11; el 31/10 y 1/11 es solo el Pre-Cyber de suscriptores
 (function () {
 /* ===================== EDITA SOLO ESTE BLOQUE ===================== */
-var INICIO = new Date("2026-10-31T00:00:00-03:00"); // arranca el Cyber
-var FIN    = new Date("2026-11-02T00:00:00-03:00"); // desde acá la barra no aparece más
+var INICIO = new Date("2026-11-02T00:00:00-03:00"); // arranca el Cyber (antes: 2026-10-31)
+var FIN    = new Date("2026-11-05T00:00:00-03:00"); // desde acá la barra no aparece más (antes: 2026-11-02)
 var BIG    = "80%";
 var BIG_SUB = "de descuento";
-var TIT_ANTES   = "Sábado 31 a las 00:00 hs arranca el Cyber Coman";
+var TIT_ANTES   = "El lunes 2/11 a las 00:00 hs arranca el Cyber Coman"; // antes: "Sábado 31 a las 00:00 hs arranca el Cyber Coman"
 var TIT_MANANA  = "Mañana 00:00 hs arranca el Cyber Coman";
 var TIT_ACTIVO  = "¡Arrancó el Cyber Coman!";
-var TIT_CORTO   = "Cyber Coman · Sáb 31"; // título en celular, antes de arrancar
-var SUB    = "Hasta 80% de descuento en toda la web";
+var TIT_CORTO   = "Cyber Coman · Lun 2/11"; // título en celular, antes de arrancar (antes: "Cyber Coman · Sáb 31")
+var SUB    = "Hasta 80% de descuento"; // antes: "Hasta 80% de descuento en toda la web"
+// FIN custom
 var BOTON  = ""; // INICIO custom: sin-boton-ver-productos — vacío = no se muestra el botón (antes: "Ver productos") // FIN custom
 var LINK   = "/productos/";
 // INICIO custom: pre-cyber-mail
