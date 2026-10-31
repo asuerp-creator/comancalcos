@@ -1,5 +1,5 @@
 // INICIO custom: early-access-seccion
-// Sección "Early Access · Cyber Coman" en la home, arriba de "Elegí tu combo". v1 (19/10/2026)
+// Sección "Pre Cyber" en la home, arriba de "Elegí tu combo". v2 (31/10/2026): inscripción hasta el lunes 2/11, código de descuento
 // Se carga desde Códigos externos con una sola línea <script src=...jsdelivr...>
 // Los mails se guardan en el Google Sheet "Cyber Coman – Early Access (mails)" vía Apps Script.
 // Se apaga sola el 2/11/2026 a las 00:00.
@@ -7,11 +7,11 @@
 /* ===================== EDITA SOLO ESTE BLOQUE ===================== */
 var ENDPOINT="https://script.google.com/macros/s/AKfycbygRcED1tLhlUsGt1ETsGHU_p6kHvVqoGxlSMomVhj_Dswxi_a77Dkfp5f5si_nTF-p-Q/exec";
 var FOTO="https://acdn-us.mitiendanube.com/stores/001/911/110/products/img_20250430_160355-7d224f6ff7123cc35b17924229524260-1024-1024.webp";
-var CHIP="EARLY ACCESS · CYBER COMAN";
-var TITULO_1="Llega el descuento";
-var TITULO_2="más importante del año";
-var TEXTO="Anotate y entrá antes que nadie el 31/10 y 1/11, con promociones exclusivas para los que se suman.";
-var INICIO=new Date("2026-10-31T00:00:00-03:00"); // arranca el acceso anticipado
+var CHIP="PRE CYBER · HASTA EL LUNES";
+var TITULO_1="El Pre Cyber";
+var TITULO_2="ya está corriendo";
+var TEXTO="Dejanos tu mail y recibí tu código de descuento exclusivo. Te podés anotar hasta el lunes 2/11 a las 00:00.";
+var INICIO=new Date("2026-11-02T00:00:00-03:00"); // el contador cuenta hasta acá (lunes 2/11 00:00)
 var FIN=new Date("2026-11-02T00:00:00-03:00");    // desde acá no se muestra más
 /* =================== FIN DEL BLOQUE EDITABLE ====================== */
 
@@ -73,7 +73,7 @@ var st=document.createElement("style");st.id="mn-ea-css";st.textContent=CSS;
 (document.head||document.documentElement).appendChild(st);
 }
 var s=document.createElement("section");
-s.id="mn-ea";s.className="mn-ea";s.setAttribute("aria-label","Acceso anticipado al Cyber Coman");
+s.id="mn-ea";s.className="mn-ea";s.setAttribute("aria-label","Pre Cyber Coman: inscripción");
 s.innerHTML='<div class="mn-ea__card">'
 +'<div class="mn-ea__media"><img src="'+esc(FOTO)+'" alt="Stickers de vinilo UV de Coman Calcos" loading="lazy" decoding="async"></div>'
 +'<div class="mn-ea__content">'
@@ -86,13 +86,13 @@ s.innerHTML='<div class="mn-ea__card">'
 +'<div class="mn-ea__unit"><span class="mn-ea__num" data-m>--</span><span class="mn-ea__lbl">min</span></div>'
 +'<div class="mn-ea__unit"><span class="mn-ea__num" data-s>--</span><span class="mn-ea__lbl">seg</span></div>'
 +'</div>'
-+'<div class="mn-ea__live">¡El acceso anticipado ya arrancó!</div>'
++'<div class="mn-ea__live">¡Arrancó el Cyber Coman!</div>'
 +'<form class="mn-ea__form" novalidate>'
 +'<input type="email" name="email" placeholder="Tu mail" autocomplete="email" aria-label="Tu mail" required>'
-+'<button type="submit">Quiero mi acceso</button>'
++'<button type="submit">Quiero mi código</button>'
 +'</form>'
 +'<p class="mn-ea__msg" role="status"></p>'
-+'<div class="mn-ea__done"><strong>¡Ya estás adentro!</strong>Revisá tu mail: te vamos a ir mandando novedades hasta el 31/10.</div>'
++'<div class="mn-ea__done"><strong>¡Listo, ya estás anotado!</strong>Te vamos a mandar tu código de descuento a tu mail.</div>'
 +'</div></div>';
 
 if(store(SUB_KEY)==="1") s.classList.add("mn-ea--done");
@@ -121,7 +121,7 @@ msg.textContent="";btn.disabled=true;btn.textContent="Anotando…";
 var data=new URLSearchParams();data.append("email",email);data.append("origen","seccion");
 fetch(ENDPOINT,{method:"POST",body:data,mode:"no-cors"})
 .then(function(){store(SUB_KEY,"1");s.classList.add("mn-ea--done");})
-.catch(function(){btn.disabled=false;btn.textContent="Quiero mi acceso";msg.textContent="No pudimos anotarte. Probá de nuevo en un ratito.";});
+.catch(function(){btn.disabled=false;btn.textContent="Quiero mi código";msg.textContent="No pudimos anotarte. Probá de nuevo en un ratito.";});
 });
 return s;
 }
