@@ -1,5 +1,5 @@
 // INICIO custom: early-access-seccion
-// Sección "Pre Cyber" en la home, arriba de "Elegí tu combo". v3 (31/10/2026): inscripción hasta el lunes 2/11, muestra el código PRECYBER al anotarse
+// Sección "Pre Cyber" en la home, arriba del banner principal. v4 (31/10/2026): inscripción hasta el lunes 2/11, muestra el código PRECYBER al anotarse
 // Se carga desde Códigos externos con una sola línea <script src=...jsdelivr...>
 // Los mails se guardan en el Google Sheet "Cyber Coman – Early Access (mails)" vía Apps Script.
 // Se apaga sola el 2/11/2026 a las 00:00.
@@ -52,6 +52,9 @@ var CSS="/* INICIO custom: early-access-seccion */"
 +".mn-ea__code b{font-family:Montserrat,sans-serif;font-weight:800;font-size:24px;letter-spacing:.08em;color:var(--mn-navy);background:#fff;border:2px dashed var(--mn-sky);border-radius:12px;padding:8px 16px}"
 +".mn-ea__copy{height:44px;border:0;border-radius:999px;padding:0 20px;cursor:pointer;background:var(--mn-sky);color:var(--mn-navy);font-family:Montserrat,sans-serif;font-weight:800;font-size:13px;text-transform:uppercase}"
 +".mn-ea__codetxt{display:block;font-weight:400;font-size:14px;color:var(--mn-sky-soft)}"
+/* arriba del banner: ocupa el lugar que el encabezado transparente le reservaba al slider */
++"html body.template-home .js-home-sections-container>#mn-ea.mn-ea--top{--mn-ea-ov:calc(var(--mn-hdr-h,0px) - var(--mn-cyb-h,0px));margin-top:calc(-1 * var(--mn-ea-ov));padding-top:calc(var(--mn-ea-ov) + 20px);background:linear-gradient(180deg,#87b4d3 0,#87b4d3 var(--mn-ea-ov),#fff var(--mn-ea-ov))}"
++"html body.template-home .js-home-sections-container>#mn-ea.mn-ea--top+[data-store=\"home-slider\"]{margin-top:0}"
 +"@media (min-width:821px){"
 +".mn-ea{padding:44px 15px 12px}"
 +".mn-ea__card{display:block;min-height:460px;border-radius:28px}"
@@ -81,7 +84,7 @@ var st=document.createElement("style");st.id="mn-ea-css";st.textContent=CSS;
 var s=document.createElement("section");
 s.id="mn-ea";s.className="mn-ea";s.setAttribute("aria-label","Pre Cyber Coman: inscripción");
 s.innerHTML='<div class="mn-ea__card">'
-+'<div class="mn-ea__media"><img src="'+esc(FOTO)+'" alt="Stickers de vinilo UV de Coman Calcos" loading="lazy" decoding="async"></div>'
++'<div class="mn-ea__media"><img src="'+esc(FOTO)+'" alt="Stickers de vinilo UV de Coman Calcos" loading="eager" decoding="async"></div>'
 +'<div class="mn-ea__content">'
 +'<div><span class="mn-ea__chip">'+esc(CHIP)+'</span></div>'
 +'<h2 class="mn-ea__tit">'+esc(TITULO_1)+' <span>'+esc(TITULO_2)+'</span></h2>'
@@ -142,13 +145,16 @@ fetch(ENDPOINT,{method:"POST",body:data,mode:"no-cors"})
 return s;
 }
 
-/* "Elegí tu combo" (#mn-combos) lo crea OTRO script (combos.js) y se puede mover después,
-   así que miramos el DOM un rato y nos quedamos siempre justo arriba de él. */
+/* Va justo arriba del banner principal (slider de la home). Si el slider no está,
+   cae al lugar de antes: arriba de "Elegí tu combo" (#mn-combos, lo crea combos.js).
+   Miramos el DOM un rato por si otros scripts mueven cosas. */
 var sec=null, mo=null;
 function ubicar(){
-var c=document.getElementById("mn-combos");
+var c=document.querySelector(".js-home-sections-container>[data-store=\"home-slider\"]"), top=!!c;
+if(!c) c=document.getElementById("mn-combos");
 if(!c||!c.parentNode) return false;
 if(!sec) sec=construir();
+sec.classList.toggle("mn-ea--top",top);
 if(c.previousElementSibling!==sec) c.parentNode.insertBefore(sec,c);
 return true;
 }
