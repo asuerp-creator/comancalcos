@@ -1,5 +1,5 @@
 // INICIO custom: early-access-seccion
-// Sección "Pre Cyber" en la home, arriba de "Elegí tu combo". v2 (31/10/2026): inscripción hasta el lunes 2/11, código de descuento
+// Sección "Pre Cyber" en la home, arriba de "Elegí tu combo". v3 (31/10/2026): inscripción hasta el lunes 2/11, muestra el código PRECYBER al anotarse
 // Se carga desde Códigos externos con una sola línea <script src=...jsdelivr...>
 // Los mails se guardan en el Google Sheet "Cyber Coman – Early Access (mails)" vía Apps Script.
 // Se apaga sola el 2/11/2026 a las 00:00.
@@ -10,7 +10,9 @@ var FOTO="https://acdn-us.mitiendanube.com/stores/001/911/110/products/img_20250
 var CHIP="PRE CYBER · HASTA EL LUNES";
 var TITULO_1="El Pre Cyber";
 var TITULO_2="ya está corriendo";
-var TEXTO="Dejanos tu mail y recibí tu código de descuento exclusivo. Te podés anotar hasta el lunes 2/11 a las 00:00.";
+var TEXTO="Dejanos tu mail y recibí al instante tu código de descuento exclusivo. Te podés anotar hasta el lunes 2/11 a las 00:00.";
+var CODIGO="PRECYBER";
+var CODIGO_TXT="30% OFF · Cargalo al finalizar tu compra.";
 var INICIO=new Date("2026-11-02T00:00:00-03:00"); // el contador cuenta hasta acá (lunes 2/11 00:00)
 var FIN=new Date("2026-11-02T00:00:00-03:00");    // desde acá no se muestra más
 /* =================== FIN DEL BLOQUE EDITABLE ====================== */
@@ -46,6 +48,10 @@ var CSS="/* INICIO custom: early-access-seccion */"
 +".mn-ea__done strong{display:block;font-family:Bebas,Montserrat,sans-serif;font-weight:400;font-size:32px;color:var(--mn-sky)}"
 +".mn-ea--done .mn-ea__form,.mn-ea--done .mn-ea__msg{display:none}"
 +".mn-ea--done .mn-ea__done{display:block}"
++".mn-ea__code{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0 8px}"
++".mn-ea__code b{font-family:Montserrat,sans-serif;font-weight:800;font-size:24px;letter-spacing:.08em;color:var(--mn-navy);background:#fff;border:2px dashed var(--mn-sky);border-radius:12px;padding:8px 16px}"
++".mn-ea__copy{height:44px;border:0;border-radius:999px;padding:0 20px;cursor:pointer;background:var(--mn-sky);color:var(--mn-navy);font-family:Montserrat,sans-serif;font-weight:800;font-size:13px;text-transform:uppercase}"
++".mn-ea__codetxt{display:block;font-weight:400;font-size:14px;color:var(--mn-sky-soft)}"
 +"@media (min-width:821px){"
 +".mn-ea{padding:44px 15px 12px}"
 +".mn-ea__card{display:block;min-height:460px;border-radius:28px}"
@@ -92,7 +98,9 @@ s.innerHTML='<div class="mn-ea__card">'
 +'<button type="submit">Quiero mi código</button>'
 +'</form>'
 +'<p class="mn-ea__msg" role="status"></p>'
-+'<div class="mn-ea__done"><strong>¡Listo, ya estás anotado!</strong>Te vamos a mandar tu código de descuento a tu mail.</div>'
++'<div class="mn-ea__done"><strong>¡Listo, ya estás anotado!</strong>Tu código de descuento es:'
++'<div class="mn-ea__code"><b>'+esc(CODIGO)+'</b><button type="button" class="mn-ea__copy">Copiar código</button></div>'
++'<span class="mn-ea__codetxt">'+esc(CODIGO_TXT)+'</span></div>'
 +'</div></div>';
 
 if(store(SUB_KEY)==="1") s.classList.add("mn-ea--done");
@@ -109,6 +117,14 @@ count.querySelector("[data-m]").textContent=pad(Math.floor(x%3600/60));
 count.querySelector("[data-s]").textContent=pad(x%60);
 setTimeout(tick,1000);
 })();
+
+// boton copiar codigo
+var copy=s.querySelector(".mn-ea__copy");
+copy.addEventListener("click",function(){
+var ok=function(){copy.textContent="¡Copiado!";setTimeout(function(){copy.textContent="Copiar código";},2000);};
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(CODIGO).then(ok,function(){});}
+else{try{var t=document.createElement("textarea");t.value=CODIGO;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();ok();}catch(e){}}
+});
 
 // formulario -> Google Sheet
 var form=s.querySelector(".mn-ea__form"), msg=s.querySelector(".mn-ea__msg");
