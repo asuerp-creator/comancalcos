@@ -52,6 +52,12 @@ var CSS = "/* INICIO custom: barra-cyber-countdown */"
 + ".mn-cyb__send[disabled]{opacity:.6;cursor:default}"
 + ".mn-cyb__msg{flex:1 0 100%;text-align:center;font-size:12px;font-weight:700;color:#fff;margin:0}"
 /* FIN custom */
+/* INICIO custom: cuenta-regresiva-fin-cyber — en celular el contador va en su propia línea, al lado del 80% */
++ ".mn-cyb__txt{flex:1 1 0%;max-width:250px}"
++ ".mn-cyb__falta{white-space:nowrap}"
++ ".mn-cyb__sub-l::after{content:\"\";display:block}"
++ ".mn-cyb__dot{display:none}"
+/* FIN custom */
 + "@media (min-width:768px){"
 + ".mn-cyb__in{padding:12px 16px;gap:32px}"
 + ".mn-cyb__num{font-size:40px}"
@@ -60,6 +66,11 @@ var CSS = "/* INICIO custom: barra-cyber-countdown */"
 + ".mn-cyb__tit-c{display:none}.mn-cyb__tit-l{display:inline}"
 + ".mn-cyb__sub{font-size:13px}.mn-cyb__sub-l{display:inline}"
 + ".mn-cyb__timer{font-size:14px}"
+/* INICIO custom: cuenta-regresiva-fin-cyber */
++ ".mn-cyb__txt{flex:0 1 auto;max-width:none}"
++ ".mn-cyb__sub-l::after{display:none}"
++ ".mn-cyb__dot{display:inline}"
+/* FIN custom */
 + ".mn-cyb__btn{font-size:13px;letter-spacing:1.5px;padding:11px 26px}"
 /* INICIO custom: pre-cyber-mail */
 + ".mn-cyb__in{flex-wrap:nowrap;gap:24px}"
@@ -196,7 +207,7 @@ function armar() {
       subL.textContent = SUB;
       subL.style.display = "inline";
       // INICIO custom: cuenta-regresiva-fin-cyber — durante el Cyber cuenta hasta FIN (antes: se ocultaba el contador)
-      falta.textContent = " · " + TERMINA + " ";
+      falta.innerHTML = '<span class="mn-cyb__dot"> · </span>' + TERMINA + " ";
       falta.style.display = "inline";
       timer.style.display = "inline-block";
       timer.textContent = fmt(FIN.getTime() - ahora);
