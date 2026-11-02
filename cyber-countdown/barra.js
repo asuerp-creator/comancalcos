@@ -13,7 +13,8 @@ var TIT_ANTES   = "El lunes 2/11 a las 00:00 hs arranca el Cyber Coman"; // ante
 var TIT_MANANA  = "Mañana 00:00 hs arranca el Cyber Coman";
 var TIT_ACTIVO  = "¡Arrancó el Cyber Coman!";
 var TIT_CORTO   = "Cyber Coman · Lun 2/11"; // título en celular, antes de arrancar (antes: "Cyber Coman · Sáb 31")
-var SUB    = "Hasta 80% de descuento"; // antes: "Hasta 80% de descuento en toda la web"
+var SUB    = "Hasta 80% de descuento";
+var TERMINA = "termina en"; // INICIO custom: cuenta-regresiva-fin-cyber — texto antes del contador mientras el Cyber está activo (cuenta hasta FIN) // FIN custom // antes: "Hasta 80% de descuento en toda la web"
 // FIN custom
 var BOTON  = ""; // INICIO custom: sin-boton-ver-productos — vacío = no se muestra el botón (antes: "Ver productos") // FIN custom
 var LINK   = "/productos/";
@@ -75,6 +76,15 @@ var CSS = "/* INICIO custom: barra-cyber-countdown */"
 + "/* FIN custom */";
 
 function pad(n) { return (n < 10 ? "0" : "") + n; }
+// INICIO custom: cuenta-regresiva-fin-cyber
+function fmt(ms) {
+  var s = Math.max(0, Math.floor(ms / 1000));
+  var d = Math.floor(s / 86400);
+  var h = Math.floor((s % 86400) / 3600);
+  var m = Math.floor((s % 3600) / 60);
+  return (d > 0 ? d + "d " : "") + pad(h) + ":" + pad(m) + ":" + pad(s % 60);
+}
+// FIN custom
 
 function armar() {
   if (document.getElementById("mn-cyb")) return;
@@ -185,8 +195,12 @@ function armar() {
       titL.textContent = TIT_ACTIVO;
       subL.textContent = SUB;
       subL.style.display = "inline";
-      falta.style.display = "none";
-      timer.style.display = "none";
+      // INICIO custom: cuenta-regresiva-fin-cyber — durante el Cyber cuenta hasta FIN (antes: se ocultaba el contador)
+      falta.textContent = " · " + TERMINA + " ";
+      falta.style.display = "inline";
+      timer.style.display = "inline-block";
+      timer.textContent = fmt(FIN.getTime() - ahora);
+      // FIN custom
       // INICIO custom: pre-cyber-mail — cuando arranca el Cyber se saca el formulario
       var fm = bar.querySelector(".mn-cyb__form, .mn-cyb__msg");
       if (fm) fm.parentNode.removeChild(fm);
@@ -194,11 +208,7 @@ function armar() {
       if (!bar.mnActivo) { bar.mnActivo = true; avisarAltura(); }
       return;
     }
-    var s = Math.floor(diff / 1000);
-    var d = Math.floor(s / 86400);
-    var h = Math.floor((s % 86400) / 3600);
-    var m = Math.floor((s % 3600) / 60);
-    timer.textContent = (d > 0 ? d + "d " : "") + pad(h) + ":" + pad(m) + ":" + pad(s % 60);
+    timer.textContent = fmt(diff);
     var tl = diff <= 86400000 ? TIT_MANANA : TIT_ANTES;
     titL.textContent = tl;
     titC.textContent = diff <= 86400000 ? "Cyber Coman · mañana 00 hs" : TIT_CORTO;
