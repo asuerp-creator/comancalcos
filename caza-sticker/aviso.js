@@ -10,6 +10,7 @@
   + ".mn-caza strong{display:block;font-size:22px;margin-bottom:4px}"
   + ".mn-caza code{display:inline-block;margin:6px 0 2px;padding:4px 12px;border-radius:8px;"
   + "background:#1a1a1a;color:#ffd84d;font-size:26px;font-weight:800;letter-spacing:2px;font-family:inherit}"
+  + ".mn-caza__tarde{display:block;margin-top:8px;padding-top:8px;border-top:1px solid #e8d48a;font-size:13px;line-height:1.3;color:#6b5a1e}"
   + "@media (min-width:768px){.mn-caza{font-size:20px}.mn-caza strong{font-size:26px}.mn-caza code{font-size:30px}}"
   + "/* FIN custom */";
 
@@ -28,7 +29,8 @@
     box.className = "mn-caza";
     box.innerHTML = "<strong>🔎 ¡Encontraste un sticker a $1!</strong>"
       + "Usá este código en el carrito:<br><code>" + m[0] + "</code><br>"
-      + "<small>1 sola unidad · el primero que lo usa se lo lleva</small>";
+      + "<small>1 sola unidad · el primero que lo usa se lo lleva</small>"
+      + "<span class=\"mn-caza__tarde\">Si el código no anda, llegaste tarde: ya lo usaron. ¡Seguí buscando los demás!</span>";
     precio.parentNode.insertBefore(box, precio.nextSibling);
   }
 
