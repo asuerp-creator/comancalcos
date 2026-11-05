@@ -6,12 +6,13 @@
 (function () {
 /* ===================== EDITA SOLO ESTE BLOQUE ===================== */
 var INICIO = new Date("2026-11-02T00:00:00-03:00"); // arranca el Cyber (antes: 2026-10-31)
-var FIN    = new Date("2026-11-05T00:00:00-03:00"); // desde acá la barra no aparece más (antes: 2026-11-02)
+var FIN    = new Date("2026-11-09T00:00:00-03:00"); // INICIO custom: cyber-extendido-domingo — Cyber extendido hasta el domingo 8/11 23:59 (antes: 2026-11-05) // FIN custom
 var BIG    = "80%";
 var BIG_SUB = "de descuento";
 var TIT_ANTES   = "El lunes 2/11 a las 00:00 hs arranca el Cyber Coman"; // antes: "Sábado 31 a las 00:00 hs arranca el Cyber Coman"
 var TIT_MANANA  = "Mañana 00:00 hs arranca el Cyber Coman";
-var TIT_ACTIVO  = "¡Arrancó el Cyber Coman!";
+var TIT_ACTIVO  = "¡Cyber Coman extendido hasta el domingo!"; // INICIO custom: cyber-extendido-domingo (antes: "¡Arrancó el Cyber Coman!") // FIN custom
+var TIT_ACTIVO_CORTO = "Cyber extendido al domingo"; // INICIO custom: cyber-extendido-domingo — título en celular durante el Cyber // FIN custom
 var TIT_CORTO   = "Cyber Coman · Lun 2/11"; // título en celular, antes de arrancar (antes: "Cyber Coman · Sáb 31")
 var SUB    = "Hasta 80% de descuento";
 var TERMINA = "termina en"; // INICIO custom: cuenta-regresiva-fin-cyber — texto antes del contador mientras el Cyber está activo (cuenta hasta FIN) // FIN custom // antes: "Hasta 80% de descuento en toda la web"
@@ -202,7 +203,7 @@ function armar() {
     }
     var diff = INICIO.getTime() - ahora;
     if (diff <= 0) {
-      titC.textContent = TIT_ACTIVO;
+      titC.textContent = TIT_ACTIVO_CORTO; // INICIO custom: cyber-extendido-domingo (antes: TIT_ACTIVO) // FIN custom
       titL.textContent = TIT_ACTIVO;
       subL.textContent = SUB;
       subL.style.display = "inline";
