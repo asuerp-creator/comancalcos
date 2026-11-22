@@ -6,6 +6,7 @@
 var TITLE="https://acdn-us.mitiendanube.com/stores/001/911/110/products/mn-titulo-categorias-5f0628a04be10fce3b17891557991629-640-0.webp";
 var LIMIT=12, SPEED=35;
 var CATS=[
+["Boca","/deportes/boca-juniors/"], // 22/11/2026: primera = la que se abre al cargar la home
 ["Malvinas","/malvinas/"],
 ["Deportes","/deportes/",[["Argentina","/deportes/stickers-especiales/"],["Messi","/deportes/stickers-especiales/messi/"],["Diego","/deportes/stickers-especiales/diego/"],["La Scaloneta","/deportes/stickers-especiales/la-scaloneta/"],["Boca Juniors","/deportes/boca-juniors/"],["Básquet","/deportes/nba/"],["River Plate","/deportes/river-plate/"],["Fútbol Argentino","/deportes/futbol-argentino/"],["Racing","/deportes/futbol-argentino/racing/"],["Independiente","/deportes/futbol-argentino/independiente/"],["Estudiantes","/deportes/futbol-argentino/estudiantes/"],["San Lorenzo","/deportes/futbol-argentino/san-lorenzo/"],["Vélez","/deportes/futbol-argentino/velez/"],["Huracán","/deportes/futbol-argentino/huracan/"],["Rosario Central","/deportes/futbol-argentino/rosario-central1/"],["Otros Equipos","/deportes/futbol-argentino/otros-equipos/"]]],
 ["Mayorista","/stickers-por-mayor/"],
