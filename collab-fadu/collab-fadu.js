@@ -11,7 +11,7 @@ var CDN="https://acdn-us.mitiendanube.com/stores/001/911/110/products/";
 
 /* ===================== EDITA SOLO ESTE BLOQUE ===================== */
 var CHIP="COMAN CALCOS \u00d7 @LACHICADEFADU";
-var TITULO="STICKERS PARA LA FADU";
+var TITULO="STICKERS PARA AMANTES DEL DISE\u00d1O";
 var TEXTO='Los armamos junto a <a href="https://www.instagram.com/lachicadefadu/" target="_blank" rel="noopener">@lachicadefadu</a>: entregas, renders eternos, la banqueta del taller y el Pantone de la facu. Tres combos para la notebook, el termo o la carpeta.';
 var P=[
  {t:"Combo FADU Blanco", d:"8 stickers \u00b7 vinilo con borde blanco", pr:"14.720", ant:"18.400", off:"-20%", tag:"", h:"combo-fadu-blanco-x-lachicadefadu-8-stickers-10ey1", p:"383095720", v:"1645510393", mi:"combo-fadu-blanco-daf2a55e3a2db96d1817955385616797"},
