@@ -22,7 +22,7 @@ var P=[
 
 var CSS=''
 /* INICIO custom: seccion-collab-fadu (css) */
-+'.mn-fadu{position:relative;overflow:hidden;overflow-x:clip;margin:0 0 56px;padding:52px 0 44px;font-family:Poppins,sans-serif;color:#fff;'
++'.mn-fadu{position:relative;scroll-margin-top:120px;overflow:hidden;overflow-x:clip;margin:0 0 56px;padding:52px 0 44px;font-family:Poppins,sans-serif;color:#fff;'
 +'background-color:#26684c;background-image:linear-gradient(rgba(220,240,225,.22) 2px,transparent 2px),linear-gradient(90deg,rgba(220,240,225,.22) 2px,transparent 2px),linear-gradient(rgba(220,240,225,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(220,240,225,.09) 1px,transparent 1px);background-size:120px 120px,120px 120px,24px 24px,24px 24px}'
 +'.mn-fadu__in{position:relative;max-width:1240px;margin:0 auto;padding:0 20px;box-sizing:border-box}'
 +'.mn-fadu__deco{position:absolute;height:auto;pointer-events:none;filter:drop-shadow(0 8px 14px rgba(5,20,15,.35));z-index:0}'
