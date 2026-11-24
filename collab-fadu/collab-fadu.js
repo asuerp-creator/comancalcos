@@ -31,7 +31,7 @@ var CSS=''
 +'.mn-fadu__deco--3,.mn-fadu__deco--4{display:none}'
 +'.mn-fadu__head{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;max-width:760px;margin:0 auto;padding-top:28px}'
 +'.mn-fadu__chip{background:#fff;color:#10233f;font-weight:700;font-size:11px;letter-spacing:.12em;padding:7px 13px;border-radius:999px}'
-+'.mn-fadu__tit{margin:0;font-family:MnAnton,Montserrat,sans-serif;font-weight:400;font-size:clamp(40px,11vw,68px);line-height:1;color:#fff;letter-spacing:.01em}'
++'.mn-fadu__tit{margin:0;font-family:MnAnton,Montserrat,sans-serif;font-weight:400;font-size:clamp(40px,11vw,68px);line-height:1;color:#fff;letter-spacing:.01em;text-wrap:balance}'
 +'.mn-fadu__txt{margin:0;font-size:15px;line-height:1.55;color:#eef6f1}'
 +'.mn-fadu__txt a{color:#fff;font-weight:700;text-decoration:underline}'
 /* mobile: carrusel horizontal */
