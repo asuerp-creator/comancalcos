@@ -1,6 +1,6 @@
 // INICIO custom: seccion-collab-fadu
-/* Seccion "Stickers para la FADU" (collab con @lachicadefadu) — Coman Calcos, 24/11/2026.
-   Se inserta justo ARRIBA de "Elegí tu combo" (#mn-combos), o sea entre el carrusel de
+/* Seccion "Stickers para la FADU" (collab con @lachicadefadu) \u2014 Coman Calcos, 24/11/2026.
+   Se inserta justo ARRIBA de "Eleg\u00ed tu combo" (#mn-combos), o sea entre el carrusel de
    categorias (#mn-catbar) y los combos. Agrega al carrito sin salir de la pagina usando el
    AJAX del tema (clases js-*), igual que #mn-combos. Para sacarla: borrar la linea del
    <script src=".../collab-fadu/collab-fadu.js"> en Configuracion > Codigos externos. */
@@ -10,13 +10,13 @@ var BASE=(function(){try{var e=document.currentScript;if(e&&e.src)return e.src.r
 var CDN="https://acdn-us.mitiendanube.com/stores/001/911/110/products/";
 
 /* ===================== EDITA SOLO ESTE BLOQUE ===================== */
-var CHIP="COMAN CALCOS × @LACHICADEFADU";
+var CHIP="COMAN CALCOS \u00d7 @LACHICADEFADU";
 var TITULO="STICKERS PARA LA FADU";
 var TEXTO='Los armamos junto a <a href="https://www.instagram.com/lachicadefadu/" target="_blank" rel="noopener">@lachicadefadu</a>: entregas, renders eternos, la banqueta del taller y el Pantone de la facu. Tres combos para la notebook, el termo o la carpeta.';
 var P=[
- {t:"Combo FADU Blanco", d:"8 stickers · vinilo con borde blanco", pr:"14.720", ant:"18.400", off:"-20%", tag:"", h:"combo-fadu-blanco-x-lachicadefadu-8-stickers-10ey1", p:"383095720", v:"1645510393", mi:"combo-fadu-blanco-daf2a55e3a2db96d1817955385616797"},
- {t:"Combo Diseño", d:"9 stickers · vinilo con borde blanco", pr:"16.560", ant:"20.700", off:"-20%", tag:"EL MÁS COMPLETO", h:"combo-diseno-x-lachicadefadu-9-stickers-1302g", p:"383094803", v:"1645507642", mi:"combo-fadu-diseno-fcac0a4a2d0997f9a417955385595737"},
- {t:"Combo FADU Negro", d:"9 stickers · vinilo con borde negro", pr:"16.560", ant:"20.700", off:"-20%", tag:"", h:"combo-fadu-negro-x-lachicadefadu-9-stickers-y9kl7", p:"383096034", v:"1645511858", mi:"combo-fadu-negro-664497cf684309ab1b17955385636159"}
+ {t:"Combo FADU Blanco", d:"8 stickers \u00b7 vinilo con borde blanco", pr:"14.720", ant:"18.400", off:"-20%", tag:"", h:"combo-fadu-blanco-x-lachicadefadu-8-stickers-10ey1", p:"383095720", v:"1645510393", mi:"combo-fadu-blanco-daf2a55e3a2db96d1817955385616797"},
+ {t:"Combo Dise\u00f1o", d:"9 stickers \u00b7 vinilo con borde blanco", pr:"16.560", ant:"20.700", off:"-20%", tag:"EL M\u00c1S COMPLETO", h:"combo-diseno-x-lachicadefadu-9-stickers-1302g", p:"383094803", v:"1645507642", mi:"combo-fadu-diseno-fcac0a4a2d0997f9a417955385595737"},
+ {t:"Combo FADU Negro", d:"9 stickers \u00b7 vinilo con borde negro", pr:"16.560", ant:"20.700", off:"-20%", tag:"", h:"combo-fadu-negro-x-lachicadefadu-9-stickers-y9kl7", p:"383096034", v:"1645511858", mi:"combo-fadu-negro-664497cf684309ab1b17955385636159"}
 ];
 /* =================== FIN DEL BLOQUE EDITABLE ====================== */
 
@@ -116,7 +116,7 @@ h+='<li class="mn-fadu__card">'
 }
 h+='</ul><div class="mn-fadu__dots" aria-hidden="true">';
 for(var j=0;j<P.length;j++)h+='<span class="mn-fadu__dot'+(j===0?' is-on':'')+'"></span>';
-h+='</div><p class="mn-fadu__hint" aria-hidden="true">Deslizá para ver los 3 combos →</p></div>';
+h+='</div><p class="mn-fadu__hint" aria-hidden="true">Desliz\u00e1 para ver los 3 combos \u2192</p></div>';
 s.innerHTML=h;
 
 /* Puntitos del carrusel (solo celular) */
